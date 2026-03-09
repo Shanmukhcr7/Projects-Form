@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #6366f1;
+    /* Indigo */
+    --primary-hover: #4f46e5;
+    --secondary: #10b981;
+    /* Emerald */
+    --bg-color: #f8fafc;
+    /* Slate 50 */
+    --card-bg: #ffffff;
+    --text-primary: #1e293b;
+    /* Slate 800 */
+    --text-secondary: #64748b;
+    /* Slate 500 */
+    --border-color: #e2e8f0;
+    /* Slate 200 */
+    --input-bg: #f8fafc;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Hero Banner --- */
+.hero-banner {
+    background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+    padding: 3.5rem 0 5rem 0;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3rem;
+    background: linear-gradient(to top right, transparent 49%, var(--bg-color) 50%);
+}
+
+.hero-title {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.025em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-subtitle {
+    font-weight: 400;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Form Container & Card --- */
+.form-wrapper {
+    margin-top: -3.5rem;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 10;
+}
+
+.saas-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 2.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.saas-card:hover {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    transform: translateY(-2px);
+}
+
+/* --- Form Fields & Floating Labels --- */
+.form-floating {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    z-index: 5;
+    transition: color 0.3s ease;
+}
+
+/* Adjust Bootstrap's floating label to accommodate the icon */
+.form-floating>label {
+    padding-left: 2.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.form-floating>.form-control,
+.form-floating>.form-select {
+    padding-left: 2.75rem;
+    height: 3.5rem;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Textarea specific height */
+.form-floating>textarea.form-control {
+    height: 120px;
+    padding-top: 1.625rem;
+    /* Bootstrap default for floating textarea */
+}
+
+/* Ensure the icon in textarea stays at the top, not vertically centered */
+.form-floating.textarea-wrapper .input-icon {
+    top: 1.25rem;
+    transform: none;
+}
+
+/* Focus states */
+.form-control:focus,
+.form-select:focus {
+    background-color: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+.form-control:focus~.input-icon,
+.form-select:focus~.input-icon {
+    color: var(--primary);
+}
+
+/* Validation Styling */
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: #ef4444;
+    padding-right: 2.75rem;
+    /* Add space for the validation icon if bootstrap provides one */
+    background-image: none;
+    /* override bootstrap default invalid icon */
+}
+
+.is-invalid~.input-icon {
+    color: #ef4444 !important;
+}
+
+.invalid-feedback {
+    font-size: 0.85rem;
+    color: #ef4444;
+    margin-top: 0.35rem;
+    padding-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.invalid-feedback::before {
+    content: '\f071';
+    /* FontAwesome warning icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+
+
+/* --- Buttons --- */
+.btn-saas {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    color: white;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.05rem;
+    letter-spacing: 0.025em;
+    box-shadow: 0 4px 6px rgba(99, 102, 241, 0.25);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-saas:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(99, 102, 241, 0.35);
+    color: white;
+}
+
+.btn-saas:active {
+    transform: translateY(0);
+}
+
+.btn-outline-saas {
+    background: transparent;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.btn-outline-saas:hover {
+    background: var(--input-bg);
+    color: var(--text-primary);
+    border-color: #cbd5e1;
+}
+
+/* --- Animations --- */
+.fade-up {
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+.delay-4 {
+    animation-delay: 0.4s;
+}
+
+
+/* --- Success Page --- */
+.success-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    color: var(--secondary);
+    font-size: 2.5rem;
+    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .hero-banner {
+        padding: 2.5rem 1rem 4rem 1rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .saas-card {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+
+    .form-wrapper {
+        margin-top: -2.5rem;
+        padding: 0 10px;
+    }
+
+    .btn-saas,
+    .btn-outline-saas {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .d-flex.justify-content-between {
+        flex-direction: column;
+    }
+}
+/* --- Dashboard Specific Styles --- */
+.dashboard-header {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    padding: 2.5rem 0 3rem 0;
+    color: white;
+    margin-bottom: -1.5rem;
+}
+
+.dashboard-title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+}
+
+.table-saas {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.table-saas table {
+    margin-bottom: 0;
+}
+
+.table-saas th {
+    background-color: #f1f5f9;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.table-saas td {
+    padding: 1rem 1.25rem;
+    color: var(--text-primary);
+    vertical-align: middle;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.95rem;
+}
+
+.table-saas tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-saas tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table-saas tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.badge-saas {
+    padding: 0.4em 0.8em;
+    font-size: 0.75em;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.badge-branch {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+}
+
+.btn-icon-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background-color: #f1f5f9;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.btn-icon-sm:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Empty state */
+.empty-state {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+}
